@@ -1,0 +1,233 @@
+type()
+
+
+operator
+---------
+
+	arthemethic operator
+		+, -, *, /, //, %, **
+
+
+	relational operator
+		> , < , >= , <= , == , !=
+
+	overloaded operator
+
+		concatinaition (=)
+		repeat(*)
+		in , not in
+
+	logical operator
+		and , or
+
+	
+if condition
+------------
+
+	if(exp):
+
+
+	elif(exp):
+
+
+	else:
+
+
+
+while loop
+----------
+
+	while(exp):
+	
+	[break]
+	[continue]
+
+
+
+string function
+---------------
+
+	immutable
+	supports indexing and slicing
+	
+
+
+	capitalize()
+	title()
+	lower()  casefold()
+	upper()
+	swapcase()
+	index()
+	find() 
+	
+	ord()
+	chr()
+	
+	rfind()
+	split()
+	
+	
+	rsplit()
+
+	endswith()
+	startswith()
+	
+	ljust()
+	rjust()
+	center()
+	
+
+	partition()
+	strip()
+	rstrip()
+	lstrip()
+	
+	
+	replace("oldobj","newobj")
+	
+	"obj".join(arrayname)
+	
+	
+	
+	islower()
+	isupper()
+	isdigit()
+	isspace()
+	isalpha()
+	isnumeric()
+	isdecimal()
+	istitle()
+	isalnum()
+	count()  
+	
+	
+	
+	
+tuple()
+--------
+
+	
+	a type of collection
+	heterogeneous
+	immutable
+	
+	tuple()
+	t=()
+	
+	indexing and slicing	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+list
+------
+
+	heterogeneous  in nature
+	mutable{edit delete append }
+	support indexing and slicing
+	support various overloaded operator like
+	+ * > < >= <= == !=
+
+	one can create list in following manner
+
+  	[]
+   	list ()
+
+	l=[]
+	l=list()
+ 
+	append(obj)
+
+	insert (index ,obj)
+
+	count (obj)
+
+	clear()
+
+	copy()
+	  create deep copy
+	pop()
+
+	pop(index)
+
+	remove(obj)
+
+	sort()
+
+	sort(reverse=true)
+
+	len(), min(), max(), any(), all(), sum(),
+
+	sorted()
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
