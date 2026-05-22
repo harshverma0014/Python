@@ -88,6 +88,117 @@
 
 
 
+
+# EDIT
+
+
+# try:
+#     import pymysql as mysql
+#     db = mysql.connect(host='localhost',port=3306,user='root',password='1234',database='sample',cursorclass=mysql.cursors.DictCursor)
+
+#     smt=db.cursor()
+#     id=input("Enter Employee ID u want to edit :  ")
+#     smt.execute(f'Select * from employee where employeeid={id}')
+    
+#     record=smt.fetchone()
+#     if (record):
+#         print("Employee id :",record['EmployeeID'])
+#         print("1] Employee Name :",record['EmployeeName'])
+#         print("2] Employee city :",record['City'])
+#         print("3] Employee salary :",record['Salary'])
+#         print("4] Exit")
+#         ch=int(input('Enter Choice[1-4] :'))
+#         pat=''
+#         if (ch==1):
+#             en=input("Enter New Employee Name : ")
+#             pat=f'employeename="{en}"'
+#         elif (ch==2):
+#             ec=input("Enter New Employee City : ")
+#             pat=f'city="{ec}"'
+#         elif (ch==3):
+#             es=input("Enter New Employee Salary : ")
+#             pat=f'salary="{es}"'
+#         elif (ch==4):
+#             print("Exit")
+#         else:
+#             print("Wrong option..")
+#         if(pat!=''):
+#          q=f"update employee set {pat} where employeeid={id}"
+#          smt.execute(q)
+#          db.commit()
+#          print('Employee update successfully....')
+#     db.close()
+ 
+
+# except Exception as e:
+#     print('Error : ',e)
+
+
+
+
+
+
+
+
+# delete
+
+# try:
+#     import pymysql as mysql
+#     db = mysql.connect(host='localhost',port=3306,user='root',password='1234',database='sample',cursorclass=mysql.cursors.DictCursor)
+
+#     smt=db.cursor()
+#     id=input("Enter Employee ID u want to delete :  ")
+#     smt.execute(f'Select * from employee where employeeid={id}')
+    
+#     record=smt.fetchone()
+#     if (record):
+#         print("Employee id :",record['EmployeeID'])
+#         print("Employee Name :",record['EmployeeName'])
+#         print("Employee city :",record['City'])
+#         print("Employee salary :",record['Salary'])
+        
+#         ch=input('Do you want to delete above record y/n:')
+#         if(ch.lower()=='y'):
+#          q=f"delete from employee where employeeid={id}"
+#          smt.execute(q)
+#          db.commit()
+#          print('Employee deleted successfully....')
+#     else:
+#         print(f'Employee not exist {id}')
+#     db.close()
+ 
+
+# except Exception as e:
+#     print('Error : ',e)
+
+
+
+
+
+# join
+
+
+# try:
+#     import pymysql as mysql
+#     db = mysql.connect(host='localhost',port=3306,user='root',password='1234',database='power_bi',cursorclass=mysql.cursors.DictCursor)
+
+#     smt=db.cursor()
+#     smt.execute('Select categories.categoryname,products.productname,products.unitprice from products,categories where categories.categoryid=products.categoryid')
+    
+#     records=smt.fetchall()
+    
+#     for record in records:
+#         print(record['categoryname'],record['productname'],record['unitprice'])
+#     db.close()
+
+# except Exception as e:
+#     print('Error : ',e)
+
+
+
+
+
+
 # ----------------------------------------------------------
 
 
