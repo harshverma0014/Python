@@ -31,8 +31,8 @@ st.write(" 4 => delete")
 work=st.selectbox("select your work",["1","2" ,"3", "4"])
 
 
-if st.button("submit"):
-    if work=="1":
+
+if work=="1":
      try:
         eid=st.text_input("enter employee id")
         en=st.text_input("enter employee name")
@@ -61,7 +61,7 @@ if st.button("submit"):
 
 
 
-    elif work=="2":
+elif work=="2":
         try:
             smt.execute("select * from new_table")
             records=smt.fetchall()
@@ -71,40 +71,55 @@ if st.button("submit"):
 
 
 
-    elif work=="3":
+elif work=="3":
      try:
         id=st.text_input("Enter Employee id : ")
         st.badge("search Employee id")
         if id!='':
-            smt.execute(f'Select * from employee where employeeid={id}')
+            smt.execute(f'Select * from new_table where id={id}')
     
             record=smt.fetchone()
             if (record):
-                st.write("Employee id :",record['EmployeeID'])
-                st.write("1] Employee Name :",record['EmployeeName'])
-                st.write("2] Employee city :",record['City'])
-                st.write("3] Employee salary :",record['Salary'])
-                st.write("4] Exit")
-                ch=st.selectbox("select your choice",["1","2","3","4"])
+                st.write("Employee id :",record['id'])
+
+                st.write("1] Employee Name :",record['name'])
+                st.write("2] Employee date of birth :",record['dob'])
+                st.write("3] Employee gender :",record['gender'])
+                st.write("4] Employee city :",record['city'])
+                st.write("5] Employee salary :",record['salary'])
+                st.write("6] Employee phone number :",record['mobileno.'])
+                st.write("7] Exit")
+                ch=st.selectbox("select your choice",["1","2","3","4","5","6","7"])
                 pat=''
-                if (ch==1):
+                if (ch=="1"):
                     en=st.text_input("Enter New Employee Name : ")
-                    pat=f'employeename="{en}"'
-                elif (ch==2):
+                    pat=f'name="{en}"'
+
+                elif (ch=="2"):
+                    ec=st.text_input("Enter New dob : ")
+                    pat=f'dob="{ec}"'
+                elif (ch=="3"):
+                    ec=st.text_input("Enter New dob : ")
+                    pat=f'gender="{ec}"'
+    
+                elif (ch=="4"):
                     ec=st.text_input("Enter New Employee City : ")
                     pat=f'city="{ec}"'
-                elif (ch==3):
+                elif (ch=="5"):
                     es=st.number_input("Enter New Employee Salary : ")
                     pat=f'salary="{es}"'
-                elif (ch==4):
+                elif (ch=="6"):
+                    ec=st.text_input("Enter New dob : ")
+                    pat=f'mobileno.="{ec}"'
+                elif (ch=="7"):
                     pat=''
                 else:
                     st.error("Wrong option..")
-                if(ch==4):
+                if(ch==7):
                     st.info("Exit successfully....")
                 elif (st.button("update")):
                     if(pat!=''):
-                        q=f"update employee set {pat} where employeeid={id}"
+                        q=f"update new_table set {pat} where employeeid={id}"
                         smt.execute(q)
                         db.commit()
                         st.success('Employee update successfully....')
@@ -119,7 +134,7 @@ if st.button("submit"):
         
 
 
-    elif work=="4":
+elif work=="4":
         try:
          id=st.text_input("Enter Employee ID u want to delete :  ")
          if id!='':
@@ -148,6 +163,6 @@ if st.button("submit"):
         except Exception as e:
             st.error(e)
         
-    else:
+else:
         st.error("invalid input")
 
