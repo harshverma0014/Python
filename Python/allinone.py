@@ -1,10 +1,16 @@
 import streamlit as st
 import pymysql as sql
 
+st.title("Employee Management System")
+# st.markdown("""
+# <body>
+#     <img src="m2.png" width="400" height="200">
+# </body>
+# """, unsafe_allow_html=True)
 
 
-title="Employee Management System"
 
+st.image("m2.jpeg")
 # connection to database
 try:
     db=sql.connect(
@@ -74,7 +80,7 @@ elif work=="2":
 elif work=="3":
      try:
         id=st.text_input("Enter Employee id : ")
-        st.badge("search Employee id")
+        
         if id!='':
             smt.execute(f'Select * from new_table where id={id}')
     
@@ -83,12 +89,19 @@ elif work=="3":
                 st.write("Employee id :",record['id'])
 
                 st.write("1] Employee Name :",record['name'])
+
                 st.write("2] Employee date of birth :",record['dob'])
+
                 st.write("3] Employee gender :",record['gender'])
+
                 st.write("4] Employee city :",record['city'])
+
                 st.write("5] Employee salary :",record['salary'])
+
                 st.write("6] Employee phone number :",record['mobileno.'])
+
                 st.write("7] Exit")
+                
                 ch=st.selectbox("select your choice",["1","2","3","4","5","6","7"])
                 pat=''
                 if (ch=="1"):
@@ -99,7 +112,7 @@ elif work=="3":
                     ec=st.text_input("Enter New dob : ")
                     pat=f'dob="{ec}"'
                 elif (ch=="3"):
-                    ec=st.text_input("Enter New dob : ")
+                    ec=st.selectbox("gender" ,["male","female","others"])
                     pat=f'gender="{ec}"'
     
                 elif (ch=="4"):
@@ -119,7 +132,7 @@ elif work=="3":
                     st.info("Exit successfully....")
                 elif (st.button("update")):
                     if(pat!=''):
-                        q=f"update new_table set {pat} where employeeid={id}"
+                        q=f"update new_table set {pat} where id={id}"
                         smt.execute(q)
                         db.commit()
                         st.success('Employee update successfully....')
@@ -138,18 +151,28 @@ elif work=="4":
         try:
          id=st.text_input("Enter Employee ID u want to delete :  ")
          if id!='':
-          smt.execute(f'Select * from employee where employeeid={id}')
+          smt.execute(f'Select * from new_table where id={id}')
     
           record=smt.fetchone()
           if (record):
-            st.write("Employee id :",record['EmployeeID'])
-            st.write("Employee Name :",record['EmployeeName'])
-            st.write("Employee city :",record['City'])
-            st.write("Employee salary :",record['Salary'])
+            st.write("Employee id :",record['id'])
+
+            st.write(" Employee Name :",record['name'])
+
+            st.write(" Employee date of birth :",record['dob'])
+
+            st.write(" Employee gender :",record['gender'])
+
+            st.write(" Employee city :",record['city'])
+
+            st.write(" Employee salary :",record['salary'])
+
+            st.write(" Employee phone number :",record['mobileno.'])
         
             ch=st.text_input('Do you want to delete above record y/n:')
+
             if(ch.lower()=='y'):
-                q=f"delete from employee where employeeid={id}"
+                q=f"delete from new_table where id={id}"
                 smt.execute(q)
                 db.commit()
                 st.success('Employee deleted successfully....')
