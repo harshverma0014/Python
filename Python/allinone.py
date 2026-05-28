@@ -10,7 +10,9 @@ st.title("Employee Management System")
 
 
 
-st.image("m2.jpeg")
+st.image("ems2.png", width=400)
+
+
 # connection to database
 try:
     db=sql.connect(
