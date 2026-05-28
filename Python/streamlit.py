@@ -1,4 +1,4 @@
-import streamlit as st
+# import streamlit as st
 
 
 
@@ -115,6 +115,8 @@ import streamlit as st
 # -------------------------------------------------------
 
 
+# # data entery
+
 
 
 
@@ -123,10 +125,6 @@ import streamlit as st
 # import pymysql as sql
 
 
-
-
-
-# data entery
 
 # st.title("employee management system")
 
@@ -140,7 +138,7 @@ import streamlit as st
 # es=st.text_input("enter employee salary")
 # em=st.text_input("enter employee no.")
 
-
+# db = None
 # if st.button("submit"):
 #  try:
 #     db = sql.connect(
@@ -161,14 +159,16 @@ import streamlit as st
 #  except Exception as e:
 #     st.error(e)
 #  finally:
-
-#     db.close()
+#     if db:
+#         db.close()
      
 
 
 
 # displayall
 
+# import streamlit as st
+# import pymysql as sql
 # try:
 #     db = sql.connect(
 #     host ='localhost',
@@ -205,38 +205,40 @@ import streamlit as st
 
 #     smt=db.cursor()
 #     id=st.text_input("Enter Employee id : ")
-#     smt.execute(f'Select * from employee where employeeid={id}')
+#     if id!='':
+#         smt.execute(f'Select * from employee where employeeid={id}')
     
-#     record=smt.fetchone()
-#     if (record):
-#         st.write("Employee id :",record['EmployeeID'])
-#         st.write("1] Employee Name :",record['EmployeeName'])
-#         st.write("2] Employee city :",record['City'])
-#         st.write("3] Employee salary :",record['Salary'])
-#         st.write("4] Exit")
-#         ch=st.number_input('Enter Choice[1-4] :', min_value=1, max_value=4)
-#         pat=''
-#         if (ch==1):
+#         record=smt.fetchone()
+#         if (record):
+#          st.write("Employee id :",record['EmployeeID'])
+#          st.write("1] Employee Name :",record['EmployeeName'])
+#          st.write("2] Employee city :",record['City'])
+#          st.write("3] Employee salary :",record['Salary'])
+#          st.write("4] Exit")
+#          ch=st.number_input('Enter Choice[1-4] :', min_value=1, max_value=4)
+#          pat=''
+#          if (ch==1):
 #             en=st.text_input("Enter New Employee Name : ")
 #             pat=f'employeename="{en}"'
-#         elif (ch==2):
+#          elif (ch==2):
 #             ec=st.text_input("Enter New Employee City : ")
 #             pat=f'city="{ec}"'
-#         elif (ch==3):
+#          elif (ch==3):
 #             es=st.number_input("Enter New Employee Salary : ")
 #             pat=f'salary="{es}"'
-#         elif (ch==4):
+#          elif (ch==4):
 #             pat=''
-#         else:
-#             st.error("Wrong option..")
-        
-#         if (st.button("update")):
-#          if(pat!=''):
-#           q=f"update employee set {pat} where employeeid={id}"
-#           smt.execute(q)
-#           db.commit()
-#           st.success('Employee update successfully....')
 #          else:
+#             st.error("Wrong option..")
+#          if(ch==4):
+#             st.info("Exit successfully....")
+#          elif (st.button("update")):
+#           if(pat!=''):
+#            q=f"update employee set {pat} where employeeid={id}"
+#            smt.execute(q)
+#            db.commit()
+#            st.success('Employee update successfully....')
+#           else:
 #             st.success("Exit successfully....")
     
  
@@ -267,10 +269,11 @@ import streamlit as st
 
 #     smt=db.cursor()
 #     id=st.text_input("Enter Employee ID u want to delete :  ")
-#     smt.execute(f'Select * from employee where employeeid={id}')
+#     if id!='':
+#      smt.execute(f'Select * from employee where employeeid={id}')
     
-#     record=smt.fetchone()
-#     if (record):
+#      record=smt.fetchone()
+#      if (record):
 #         st.write("Employee id :",record['EmployeeID'])
 #         st.write("Employee Name :",record['EmployeeName'])
 #         st.write("Employee city :",record['City'])
@@ -284,7 +287,7 @@ import streamlit as st
 #          st.success('Employee deleted successfully....')
 #         elif(ch.lower()=='n'):
 #             st.info('Deletion cancelled.')
-#     else:
+#      else:
 #         st.error(f'Employee not exist {id}')
     
  
@@ -293,3 +296,32 @@ import streamlit as st
 #     st.error(e)
 # finally:
 #     db.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
