@@ -24,7 +24,7 @@ except Exception as e:
 
 
 
-work=st.sidebar.radio("select your work",["1] Insert","2] Display","3] Update","4] Delete"])
+work=st.sidebar.radio("select your work",["1] Insert","2] Display","3] Update","4] find ","5] Delete"])
 
 # insert--------------------------------------------------------------------------------------------------------------------------
 if work=="1] Insert":
@@ -98,14 +98,42 @@ elif work=="3] Update":
     except Exception as e:
         st.error(e)
         
+
+
+# find --------------------------------------------------------------------------------------------------------------------------
+elif work=="4] find ":
+    st.subheader("Find employee record")
+    try:
+        id=st.text_input("Enter Employee id : ")
         
+        if id!='':
+            smt.execute(f'Select * from new_table where id={id}')
+    
+            record=smt.fetchone()
+
+            if(record):
+                st.write("Employee id :",record['id'])
+                st.write(" Employee Name :",record['name'])
+                st.write(" Employee date of birth :",record['dob'])
+                st.write(" Employee gender :",record['gender']) 
+                st.write(" Employee city :",record['city'])
+                st.write(" Employee salary :",record['salary'])
+                st.write(" Employee phone number :",record['mobileno.'])
+                st.success("Employee record found successfully....")
+    except Exception as e:
+        st.error(e)
+
+
+
 
 # delete --------------------------------------------------------------------------------------------------------------------------
-elif work=="4] Delete":
+ 
+elif work=="5] Delete":
     st.subheader("Delete Employee Record")
     try:
          id=st.text_input("Enter Employee ID u want to delete :  ")
          if id!='':
+        
           smt.execute(f'Select * from new_table where id={id}')
     
           record=smt.fetchone()
