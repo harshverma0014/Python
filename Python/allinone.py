@@ -3,19 +3,11 @@ import pymysql as sql
 
 st.title("Employee Management System")
 
-
-# st.markdown("""
-# <body>
-#     <img src="m2.png" width="400" height="200">
-# </body>
-# """, unsafe_allow_html=True)
-
-
-
 st.image("ems2.png", width=400)
 
 
-# connection to database
+# connection to database  ---------------------------------------------------------------------------------------------
+
 try:
     db=sql.connect(
         host="localhost",
@@ -32,16 +24,9 @@ except Exception as e:
 
 
 
-# st.write(" 1 => insert")
-# st.write(" 2 => display")
-# st.write(" 3 => update")
-# st.write(" 4 => delete")
-
 work=st.sidebar.radio("select your work",["1] Insert","2] Display","3] Update","4] Delete"])
-# work=st.selectbox("select your work",["1","2" ,"3", "4"])
 
-
-
+# insert--------------------------------------------------------------------------------------------------------------------------
 if work=="1] Insert":
     st.subheader("Insert Employee Record")
     try:
@@ -71,7 +56,7 @@ if work=="1] Insert":
 
 
 
-
+# display --------------------------------------------------------------------------------------------------------------------------
 elif work=="2] Display":
     st.subheader("Display Employee Records")
     try:
@@ -82,7 +67,7 @@ elif work=="2] Display":
             st.error(e)
 
 
-
+# update --------------------------------------------------------------------------------------------------------------------------
 elif work=="3] Update":
     st.subheader("Update Employee Record")
     try:
@@ -93,25 +78,13 @@ elif work=="3] Update":
     
             record=smt.fetchone()
             if (record):
-                
-                # st.write("Employee Name :")
                 em=st.text_input('Employee Name',value=f"{record['name']}")
 
 
-                # st.write("Employee date of birth :")
                 dob=st.text_input('Employee Date of Birth',value=f"{record['dob']}")
-
-                # st.write("Employee gender :")
                 eg=st.selectbox('Employee Gender',["male","female","others"],placeholder=f"{record['gender']}")
-
-                # st.write("Employee city :")
                 ec=st.selectbox('Employee City',options=["delhi","mumbai","kolkata","chennai"],placeholder=f"{record['city']}")
-                
-                # st.write("Employee salary :")
                 es=st.text_input('Employee Salary',value=f"{record['salary']}")
-
-
-                # st.write("6] Employee phone number :")
                 en=st.text_input('Employee Phone Number',value=f"{record['mobileno.']}")
 
                 if st.button("Update"):
@@ -120,63 +93,6 @@ elif work=="3] Update":
                     db.commit()
                     st.success('Employee updated successfully....')
 
-
-
-
-
-                # st.write("Employee id :",record['id'])
-
-                # st.write("1] Employee Name :",record['name'])
-
-                # st.write("2] Employee date of birth :",record['dob'])
-
-                # st.write("3] Employee gender :",record['gender'])
-
-                # st.write("4] Employee city :",record['city'])
-
-                # st.write("5] Employee salary :",record['salary'])
-
-                # st.write("6] Employee phone number :",record['mobileno.'])
-
-                # st.write("7] Exit")
-                
-                # ch=st.selectbox("select your choice",["1","2","3","4","5","6","7"])
-                # pat=''
-                # if (ch=="1"):
-                #     en=st.text_input("Enter New Employee Name : ")
-                #     pat=f'name="{en}"'
-
-                # elif (ch=="2"):
-                #     ec=st.text_input("Enter New dob : ")
-                #     pat=f'dob="{ec}"'
-                # elif (ch=="3"):
-                #     ec=st.selectbox("gender" ,["male","female","others"])
-                #     pat=f'gender="{ec}"'
-    
-                # elif (ch=="4"):
-                #     ec=st.text_input("Enter New Employee City : ")
-                #     pat=f'city="{ec}"'
-                # elif (ch=="5"):
-                #     es=st.number_input("Enter New Employee Salary : ")
-                #     pat=f'salary="{es}"'
-                # elif (ch=="6"):
-                #     ec=st.text_input("Enter New dob : ")
-                #     pat=f'mobileno.="{ec}"'
-                # elif (ch=="7"):
-                #     pat=''
-                # else:
-                #     st.error("Wrong option..")
-                # if(ch==7):
-                #     st.info("Exit successfully....")
-                # elif (st.button("update")):
-                #     if(pat!=''):
-                #         q=f"update new_table set {pat} where id={id}"
-                #         smt.execute(q)
-                #         db.commit()
-                #         st.success('Employee update successfully....')
-                # else:
-                #     st.success("Exit successfully....")
-    
  
 
     except Exception as e:
@@ -184,7 +100,7 @@ elif work=="3] Update":
         
         
 
-
+# delete --------------------------------------------------------------------------------------------------------------------------
 elif work=="4] Delete":
     st.subheader("Delete Employee Record")
     try:
@@ -208,9 +124,10 @@ elif work=="4] Delete":
 
             st.write(" Employee phone number :",record['mobileno.'])
         
-            ch=st.text_input('Do you want to delete above record y/n:')
+            ch=st.radio('Do you want to delete above record y/n:', ['y', 'n'])
 
             if(ch.lower()=='y'):
+             if st.button("Delete"):
                 q=f"delete from new_table where id={id}"
                 smt.execute(q)
                 db.commit()
