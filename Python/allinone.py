@@ -3,7 +3,7 @@ import pymysql as sql
 
 st.title("Employee Management System")
 
-st.image("ems2.png", width=400)
+st.image("ems2.png", width=100)
 
 
 # connection to database  ---------------------------------------------------------------------------------------------
@@ -92,6 +92,10 @@ elif work=="3] Update":
                     smt.execute(q) 
                     db.commit()
                     st.success('Employee updated successfully....')
+            
+                
+            else:
+                st.error(f'Employee not exist {id}')
 
  
 
@@ -120,6 +124,8 @@ elif work=="4] find ":
                 st.write(" Employee salary :",record['salary'])
                 st.write(" Employee phone number :",record['mobileno.'])
                 st.success("Employee record found successfully....")
+            else:
+                st.error(f'Employee not exist {id}')
     except Exception as e:
         st.error(e)
 
@@ -162,7 +168,7 @@ elif work=="5] Delete":
                 st.success('Employee deleted successfully....')
             elif(ch.lower()=='n'):
                 st.info('Deletion cancelled.')
-         else:
+          else:
             st.error(f'Employee not exist {id}')
     
  
