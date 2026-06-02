@@ -468,20 +468,22 @@
 # import streamlit as st
 # from streamlit_option_menu import option_menu
 # # pip install streamlit_option_menu 
-# selected = option_menu(
-#  menu_title=" ",
-#  options=["Home", "Employee", "Product", "Contact"],
-#  icons=["house", "people", "box", "telephone"],
-#  orientation="horizontal"
-# )
+# with st.sidebar:
+#  selected = option_menu(
+#   menu_title=" ",
+#   options=["Home", "Employee", "Product", "Contact"],
+#   icons=["house", "people", "box", "telephone"],
+#   orientation="vertical"
+#  )
+
 # if selected == "Home":
-#  st.title("Home Page")
+#   st.page("pages/home.py", title="Home Page")
 # elif selected == "Employee":
-#  st.title("Employee Page")
+#   st.title("Employee Page")
 # elif selected == "Product":
-#  st.title("Product Page")
+#   st.title("Product Page")
 # elif selected == "Contact":
-#  st.title("Contact Page")
+#   st.title("Contact Page")
 
 
 
@@ -489,12 +491,12 @@
 
 
 
-# import streamlit as st
-# page = st.pills(
-#  "Select Page",
-#  ["Home", "Employee", "Student", "Reports"]
-# )
-# st.write(page)
+import streamlit as st
+page = st.pills(
+ "Select Page",
+ ["Home", "Employee", "Student", "Reports"]
+)
+st.write(page)
 
 
 

@@ -32,8 +32,7 @@ def dele():
        q=f"delete from new_table where id={id}"
        smt.execute(q)
        db.commit()
-       st.success('Employee deleted successfully....')        
-       st.rerun()
+       st.success('Employee deleted successfully....') 
     except Exception as e:
         st.error(e)
 
@@ -46,7 +45,6 @@ def up():
         smt.execute(q) 
         db.commit()
         st.success('Employee updated successfully....')
-        st.rerun()
        
     except Exception as e:
         st.error(e)
@@ -89,7 +87,7 @@ try:
     if work=="0]Home":
         st.success("database connected successfully")
         st.title("Employee Management System")
-        st.image("ems2.png", width=800)
+        st.image("ems2.png", width=500)
         st.write("Welcome to Employee Management System.")
         st.write("Please select an option from the sidebar to manage employee records.")
         
@@ -224,7 +222,6 @@ try:
             if(ch.lower()=='yes'):
              if st.button("Delete"):
                 dele()
-                
             elif(ch.lower()=='no'):
                 st.info('Deletion cancelled.')
           else:
