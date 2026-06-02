@@ -530,46 +530,46 @@
 
 
 
-import pymysql as sql
-import streamlit as st
+# import pymysql as sql
+# import streamlit as st
 
-@st.dialog("connection")
-def con():
-    n = st.text_input("enter name")
-    p = st.text_input("enter pass", type="password")
+# @st.dialog("connection")
+# def con():
+#     n = st.text_input("enter name")
+#     p = st.text_input("enter pass", type="password")
 
-    if st.button("connect"):
-        try:
-            db = sql.connect(
-                host="localhost",
-                port=3306,
-                user=n,
-                password=p,
-                database="testyo",
-                cursorclass=sql.cursors.DictCursor
-            )
+#     if st.button("connect"):
+#         try:
+#             db = sql.connect(
+#                 host="localhost",
+#                 port=3306,
+#                 user=n,
+#                 password=p,
+#                 database="testyo",
+#                 cursorclass=sql.cursors.DictCursor
+#             )
 
-            st.session_state.db = db
-            st.session_state.connect = True
+#             st.session_state.db = db
+#             st.session_state.connect = True
 
-            st.success("connected to database successfully")
-            st.rerun()
+#             st.success("connected to database successfully")
+#             st.rerun()
 
-        except Exception as e:
-            st.error(e)
+#         except Exception as e:
+#             st.error(e)
 
-if "connect" not in st.session_state:
-    st.session_state.connect = False
+# if "connect" not in st.session_state:
+#     st.session_state.connect = False
 
-if not st.session_state.connect:
-    con()
+# if not st.session_state.connect:
+#     con()
 
-if st.session_state.connect:
-    db = st.session_state.db
+# if st.session_state.connect:
+#     db = st.session_state.db
 
-    smt = db.cursor()
-    smt.execute("select * from new_table")
+#     smt = db.cursor()
+#     smt.execute("select * from new_table")
 
-    records = smt.fetchall()
+#     records = smt.fetchall()
 
-    st.dataframe(records)
+#     st.dataframe(records)

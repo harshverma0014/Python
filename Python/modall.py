@@ -86,11 +86,16 @@ try:
 
 # home ------------------------------------------------------------------------------------------------------------------------
     if work=="0]Home":
+        st.success("database connected successfully")
         st.title("Employee Management System")
-        st.image("ems2.png", width=100)
-        st.write("Welcome to Employee Management System. Please select an option from the sidebar to manage employee records.")
-
+        st.image("ems2.png", width=800)
+        st.write("Welcome to Employee Management System.")
+        st.write("Please select an option from the sidebar to manage employee records.")
+        
         st.warning("Please connect to database if any error occurs.")
+        
+        if st.button("Please connect to database"):
+            con()
 
 
 
@@ -213,12 +218,12 @@ try:
 
             st.write(" Employee phone number :",record['mobileno.'])
         
-            ch=st.radio('Do you want to delete above record y/n:', ['y', 'n'])
+            ch=st.radio('Do you want to delete above record yes/no:', ['yes', 'no'])
 
-            if(ch.lower()=='y'):
+            if(ch.lower()=='yes'):
              if st.button("Delete"):
                 dele()
-            elif(ch.lower()=='n'):
+            elif(ch.lower()=='no'):
                 st.info('Deletion cancelled.')
           else:
             st.error(f'Employee not exist {id}')
@@ -232,20 +237,8 @@ try:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
  else:
-    st.warning("please connect to database")
+    st.error("please connect to database")
     if st.button("connect to database"):
         st.rerun()
 
@@ -264,59 +257,3 @@ except Exception as e:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# import pymysql as sql
-# import streamlit as st
-
-# @st.dialog("connection")
-# def con():
-#     n = st.text_input("enter name")
-#     p = st.text_input("enter pass", type="password")
-
-#     if st.button("connect"):
-#         try:
-#             db = sql.connect(
-#                 host="localhost",
-#                 port=3306,
-#                 user=n,
-#                 password=p,
-#                 database="testyo",
-#                 cursorclass=sql.cursors.DictCursor
-#             )
-
-#             st.session_state.db = db
-#             st.session_state.connect = True
-
-#             st.success("connected to database successfully")
-#             st.rerun()
-
-#         except Exception as e:
-#             st.error(e)
-
-# if "connect" not in st.session_state:
-#     st.session_state.connect = False
-
-# if not st.session_state.connect:
-#     con()
-
-# if st.session_state.connect:
-#     db = st.session_state.db
-
-#     smt = db.cursor()
-#     smt.execute("select * from new_table")
-
-#     records = smt.fetchall()
-
-#     st.dataframe(records)
