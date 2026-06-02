@@ -23,7 +23,51 @@ def con():
     st.rerun()
     
   except Exception as e:
-    st.error(e)
+    st.error("wrong username or password")
+
+
+@st.dialog("delete confirmation")
+def dele():
+    try:
+     if st.button("yes delete"):
+       q=f"delete from new_table where id={id}"
+       smt.execute(q)
+       db.commit()
+       st.success('Employee deleted successfully....') 
+    except Exception as e:
+        st.error(e)
+
+
+@st.dialog("update confirmation")
+def up():
+    try:
+     if st.button("yes update"):
+        q=f"update new_table set name='{em}', dob='{dob}', gender='{eg}', city='{ec}', salary='{es}' where id={id}"
+        smt.execute(q) 
+        db.commit()
+        st.success('Employee updated successfully....')
+       
+    except Exception as e:
+        st.error(e)
+
+
+@st.dialog("Employee Record :-")
+def fin():
+    try:
+        
+        st.write("Employee id :",record['id'])
+        st.write(" Employee Name :",record['name'])
+        st.write(" Employee date of birth :",record['dob'])
+        st.write(" Employee gender :",record['gender']) 
+        st.write(" Employee city :",record['city'])
+        st.write(" Employee salary :",record['salary'])
+        st.write(" Employee phone number :",record['mobileno.'])
+        st.success("Employee record found successfully....")
+    except Exception as e:
+        st.error(e)
+
+
+
 
 try:
 
@@ -45,7 +89,7 @@ try:
         st.title("Employee Management System")
         st.image("ems2.png", width=100)
         st.write("Welcome to Employee Management System. Please select an option from the sidebar to manage employee records.")
-        
+
         st.warning("Please connect to database if any error occurs.")
 
 
@@ -112,10 +156,7 @@ try:
                 en=st.text_input('Employee Phone Number',value=f"{record['mobileno.']}")
 
                 if st.button("Update"):
-                    q=f"update new_table set name='{em}', dob='{dob}', gender='{eg}', city='{ec}', salary='{es}' where id={id}"
-                    smt.execute(q) 
-                    db.commit()
-                    st.success('Employee updated successfully....')
+                    up()
             
                 
             else:
@@ -128,7 +169,7 @@ try:
 
 
 # find --------------------------------------------------------------------------------------------------------------------------
-    elif work=="4] find employee":
+    elif work=="4] Find Employee":
      st.subheader("Find employee record")
      try:
         id=st.text_input("Enter Employee id : ")
@@ -139,14 +180,7 @@ try:
             record=smt.fetchone()
 
             if(record):
-                st.write("Employee id :",record['id'])
-                st.write(" Employee Name :",record['name'])
-                st.write(" Employee date of birth :",record['dob'])
-                st.write(" Employee gender :",record['gender']) 
-                st.write(" Employee city :",record['city'])
-                st.write(" Employee salary :",record['salary'])
-                st.write(" Employee phone number :",record['mobileno.'])
-                st.success("Employee record found successfully....")
+                fin()
             else:
                 st.error(f'Employee not exist {id}')
      except Exception as e:
@@ -183,10 +217,7 @@ try:
 
             if(ch.lower()=='y'):
              if st.button("Delete"):
-                q=f"delete from new_table where id={id}"
-                smt.execute(q)
-                db.commit()
-                st.success('Employee deleted successfully....')
+                dele()
             elif(ch.lower()=='n'):
                 st.info('Deletion cancelled.')
           else:
