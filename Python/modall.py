@@ -123,6 +123,7 @@ try:
     
                 db.commit()
                 st.success("data inserted successfully")
+                
             except Exception as e:
                 st.error(e)
      except Exception as e:
@@ -240,7 +241,10 @@ try:
 
 
  else:
-    st.error("please connect to database")
+    st.markdown(
+    "<h2 style='color:red;'>Please connect to database</h2>",
+    unsafe_allow_html=True
+   )
     if st.button("connect to database"):
         st.rerun()
 

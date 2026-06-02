@@ -44,9 +44,8 @@ if work=="1] Insert":
                 
                 s=f"insert into new_table values ( {eid} , '{en}', '{dob}' , '{eg}' , '{ec}' , '{es}' , '{em}' ) "
                 smt.execute(s)
-    
-                db.commit()
-                st.success("data inserted successfully")
+                db.commit()     
+                st.success("data inserted successfully")          
             except Exception as e:
                 st.error(e)
     except Exception as e:

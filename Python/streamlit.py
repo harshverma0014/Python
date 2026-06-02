@@ -491,12 +491,12 @@
 
 
 
-import streamlit as st
-page = st.pills(
- "Select Page",
- ["Home", "Employee", "Student", "Reports"]
-)
-st.write(page)
+# import streamlit as st
+# page = st.pills(
+#  "Select Page",
+#  ["Home", "Employee", "Student", "Reports"]
+# )
+# st.write(page)
 
 
 
