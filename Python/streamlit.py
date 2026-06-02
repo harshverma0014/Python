@@ -320,13 +320,17 @@
 # col1, col2, col3, col4 = st.columns(4)
 # with col1:
 # st.image("https://picsum.photos/200", width=200)
+#  st.success("1jdsff")
+
 # with col2:
 # st.image("https://picsum.photos/201", width=200)
+#  st.success("2jdsff")
 # with col3:
 # st.image("https://picsum.photos/200", width=200)
+#  st.error("3jdsff")
 # with col4:
 # st.image("https://picsum.photos/201", width=200)
-
+#  st.warning("4jdsff")
 
 
 
@@ -346,6 +350,7 @@
 #    st.success("Login Successful")
 # if st.button("Open Dialog"):
 #  login_dialog()
+ 
 
 
 
@@ -375,7 +380,196 @@
 
 
 
+# import streamlit as st
+
+# # Initialize state
+# if "btn1" not in st.session_state:
+#     st.session_state.btn1 = False
+
+# if "btn2" not in st.session_state:
+#     st.session_state.btn2 = False
+
+
+# # Functions
+# def click_btn1():
+#     st.session_state.btn1 = True
+
+# def click_btn2():
+#     st.session_state.btn2 = True
+
+
+# # Buttons
+# st.button("Show Python", on_click=click_btn1)
+# st.button("Show Java", on_click=click_btn2)
+
+
+# # Output
+# if st.session_state.btn1:
+#     st.success("Python Selected")
+
+# if st.session_state.btn2:
+#     st.success("Java Selected")
 
 
 
 
+
+
+
+
+
+
+# import streamlit as st
+# st.sidebar.title("Navigation")
+# page = st.sidebar.radio(
+#  "Go To",
+#  ["Home", "Courses", "Students", "About"]
+# )
+# if page == "Home":
+#  st.title("Home Page")
+# elif page == "Courses":
+#  st.title("Courses Page")
+# elif page == "Students":
+#  st.title("Students Page")
+# elif page == "About":
+#  st.title("About Us")
+
+
+
+
+
+
+
+
+
+# import streamlit as st
+
+# tab1, tab2, tab3 = st.tabs(
+#     ["Home", "Employee", "Product"]
+# )
+
+# with tab1:
+#     st.header("Home")
+
+# with tab2:
+#     st.header("Employee")
+
+# with tab3:
+#     st.header("Product")
+
+
+
+
+
+
+
+
+
+# import streamlit as st
+# from streamlit_option_menu import option_menu
+# # pip install streamlit_option_menu 
+# selected = option_menu(
+#  menu_title=" ",
+#  options=["Home", "Employee", "Product", "Contact"],
+#  icons=["house", "people", "box", "telephone"],
+#  orientation="horizontal"
+# )
+# if selected == "Home":
+#  st.title("Home Page")
+# elif selected == "Employee":
+#  st.title("Employee Page")
+# elif selected == "Product":
+#  st.title("Product Page")
+# elif selected == "Contact":
+#  st.title("Contact Page")
+
+
+
+
+
+
+
+# import streamlit as st
+# page = st.pills(
+#  "Select Page",
+#  ["Home", "Employee", "Student", "Reports"]
+# )
+# st.write(page)
+
+
+
+
+# import streamlit as st
+# # create pages folder first
+# if st.button("Go to About"):
+ 
+#  st.switch_page("pages/ex.py")
+
+
+
+
+# import streamlit as st
+# st.title("Navigation Example")
+# st.page_link("pages/ex.py", label="Add New")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import pymysql as sql
+import streamlit as st
+
+@st.dialog("connection")
+def con():
+    n = st.text_input("enter name")
+    p = st.text_input("enter pass", type="password")
+
+    if st.button("connect"):
+        try:
+            db = sql.connect(
+                host="localhost",
+                port=3306,
+                user=n,
+                password=p,
+                database="testyo",
+                cursorclass=sql.cursors.DictCursor
+            )
+
+            st.session_state.db = db
+            st.session_state.connect = True
+
+            st.success("connected to database successfully")
+            st.rerun()
+
+        except Exception as e:
+            st.error(e)
+
+if "connect" not in st.session_state:
+    st.session_state.connect = False
+
+if not st.session_state.connect:
+    con()
+
+if st.session_state.connect:
+    db = st.session_state.db
+
+    smt = db.cursor()
+    smt.execute("select * from new_table")
+
+    records = smt.fetchall()
+
+    st.dataframe(records)
