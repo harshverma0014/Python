@@ -470,7 +470,7 @@
 # # pip install streamlit_option_menu 
 # with st.sidebar:
 #  selected = option_menu(
-#   menu_title=" ",
+#   
 #   options=["Home", "Employee", "Product", "Contact"],
 #   icons=["house", "people", "box", "telephone"],
 #   orientation="vertical"
@@ -502,7 +502,6 @@
 
 
 # import streamlit as st
-# # create pages folder first
 # if st.button("Go to About"):
  
 #  st.switch_page("pages/ex.py")
@@ -575,3 +574,68 @@
 #     records = smt.fetchall()
 
 #     st.dataframe(records)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --------------------------------------------------------------------------------------
+
+
+
+# l=48 june 2
+
+
+
+
+# ---------------------------------------------------------------------------------------
+
+
+# slider
+
+# import streamlit as st
+
+# price_range = st.slider(
+#     "select price range ",
+#     0,
+#     10000000,
+# (3000,7000)
+
+# )
+# st.write("select range : ",price_range)
+
+
+
+
+
+
+# progressbar
+
+
+# import streamlit as st
+# import time
+# if st.button ("run"):
+#    status=st.empty()
+#    bar=st.progress(0)
+#    for i in range(100):
+#       status.text (f"progress {i+1}%")
+#       bar.progress(i+1)
+#       time.sleep(0.1)
+#    status.text("completed")
+
+
+
