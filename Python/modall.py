@@ -1,7 +1,7 @@
 import pymysql as sql
 import streamlit as st
 
-@st.dialog("connection")
+@st.dialog("                   Connection                    ")
 def con():
  n=st.text_input("enter name")
  p=st.text_input("enter pass" ,type="password")
