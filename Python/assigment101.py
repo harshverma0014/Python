@@ -42,15 +42,16 @@
 
 
 
-# 4. Write a Python program to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.  Sample String : 'restart'
+# 4. Write a Python program to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.  
+# Sample String : 'restart'
 # Expected Result : 'resta$t'
 
 
-# a="restart"
-# b=a[0]
-# if b in a:
-#     mod=a[1:].replace(b,'$')
-# print(b+mod)
+a="restart"
+b=a[0]
+if b in a:
+    mod=a[1:].replace(b,'$')
+print(b+mod)
     
 
 # 5. Write a Python program to get a single string from two given strings, separated by a space and swap the first two characters of each string.  
